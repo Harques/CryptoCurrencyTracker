@@ -1,0 +1,4 @@
+crypto\CryptoCurrencyTrackerApplication.class
+crypto\DenemeEntity.class
+crypto\DenemeEntity$DenemeEntityBuilder.class
+crypto\DenemeRepository.class
