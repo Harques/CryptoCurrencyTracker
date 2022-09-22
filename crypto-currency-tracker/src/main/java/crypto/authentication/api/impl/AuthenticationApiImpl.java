@@ -10,6 +10,9 @@ import crypto.authentication.dao.repository.RoleRepository;
 import crypto.authentication.dao.repository.UserRepository;
 import crypto.authentication.service.AuthenticationService;
 import crypto.authentication.service.impl.JwtUserDetailsService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +24,8 @@ import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
+@Api(tags = "Authentication API")
+@Tag(name = "Authentication API", description = "Authentication API")
 public class AuthenticationApiImpl implements AuthenticationApi {
     private final AuthenticationService authenticationService;
     private final JwtTokenUtil jwtTokenUtil;
