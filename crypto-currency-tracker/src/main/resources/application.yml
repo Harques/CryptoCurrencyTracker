@@ -1,12 +1,6 @@
 spring:
-  datasource:
-    username: "crypto-currency-tracker-admin"
-    password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"
-    url: jdbc:mysql://localhost:3306/crypto-currency-tracker-db
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
+  profiles:
+    active: dev
 
 jwt:
   secret: JJ9QH7lNkaX3uHrhEAH8NWMcTxMLwtN9As4YsRiLbh08KV3Xet1pC19HZiOiYNe
