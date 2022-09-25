@@ -15,12 +15,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     @Override
-    public void authenticate(JwtRequest jwtRequest) throws Exception{
+    public void authenticate(JwtRequest jwtRequest) throws BadCredentialsException{
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(),jwtRequest.getPassword()));
         }
         catch (BadCredentialsException e){
-            throw new Exception("INVALID_CREDENTIALS", e);
+            throw new BadCredentialsException("INVALID_CREDENTIALS", e);
         }
     }
 }

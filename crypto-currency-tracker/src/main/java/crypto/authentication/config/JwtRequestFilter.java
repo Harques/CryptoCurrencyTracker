@@ -15,6 +15,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 @Component
 @RequiredArgsConstructor
@@ -28,6 +30,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         final String requestTokenHeader = request.getHeader("Authorization");
 
+        Logger logger = Logger.getLogger(JwtRequestFilter.class.getName());
+
         String username = null;
         String jwtToken = null;
 
@@ -39,14 +43,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             }
             catch (IllegalArgumentException e)
             {
-                System.out.println("Unable to get JWT Token");
+                logger.log(Level.WARNING, "Unable to get JWT Token");
             }
             catch (ExpiredJwtException e) {
-                System.out.println("JWT Token has expired");
+                logger.log(Level.WARNING, "JWT Token has expired");
             }
         }
         else {
-            logger.warn("JWT Token does not begin with Bearer String");
+            logger.log(Level.WARNING, "JWT Token does not begin with Bearer String");
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null){
