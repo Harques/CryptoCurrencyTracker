@@ -126,8 +126,35 @@
 				{
 					"name": "DeleteCurrency",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiUk9MRV9VU0VSIiwiaWF0IjoxNjY0MDY3ODg3LCJleHAiOjE2NjQwODU4ODd9.OnBypFvVG2aj223HbOjkwlzUUK7X2e49S1ogMbwxrqnVmfewcMSLiQOu-xbNrkPPfvMbLMCzGFPaAt7Pblfagg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/currency?symbol=BTC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"currency"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTC"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -137,10 +164,37 @@
 			"name": "Alert",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "EditAlert",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiUk9MRV9VU0VSIiwiaWF0IjoxNjY0MDY3ODg3LCJleHAiOjE2NjQwODU4ODd9.OnBypFvVG2aj223HbOjkwlzUUK7X2e49S1ogMbwxrqnVmfewcMSLiQOu-xbNrkPPfvMbLMCzGFPaAt7Pblfagg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alert?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alert"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
 					},
 					"response": []
 				},
