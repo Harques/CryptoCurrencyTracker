@@ -9,14 +9,15 @@ services:
         "spring.datasource.username" : "$MYSQL_USER",
         "spring.datasource.password" : "$MYSQL_PASSWORD",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "none"
+        "spring.jpa.hibernate.ddl-auto" : "create",
+        "spring.jpa.show-sql" : "true"
       }'
     build:
       dockerfile: Dockerfile
     ports:
-      - "8081:8081"
+      - "8080:8080"
     expose:
-      - "8081"
+      - "8080"
     depends_on:
       - db
   db:
@@ -34,5 +35,47 @@ services:
       - "3306"
     volumes:
       - db:/var/lib/mysql
+
+#  sonarqube:
+#    image: sonarqube
+#    expose:
+#      - 9000
+#    ports:
+#      - "127.0.0.1:9000:9000"
+#    networks:
+#      - sonarnet
+#    environment:
+#      - sonar.jdbc.url=jdbc:postgresql://sonar_db:5432/sonar
+#      - sonar.jdbc.username=sonar
+#      - sonar.jdbc.password=sonar
+#    volumes:
+#      - sonarqube_conf:/opt/sonarqube/conf
+#      - sonarqube_data:/opt/sonarqube/data
+#      - sonarqube_extensions:/opt/sonarqube/extensions
+#      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+#
+#  sonar_db:
+#    image: postgres
+#    networks:
+#      - sonarnet
+#    environment:
+#      - POSTGRES_USER=sonar
+#      - POSTGRES_PASSWORD=sonar
+#    volumes:
+#      - postgresql:/var/lib/postgresql
+#      - postgresql_data:/var/lib/postgresql/data
+#
+#networks:
+#  sonarnet:
+#
+#volumes:
+#  sonarqube_conf:
+#  sonarqube_data:
+#  sonarqube_extensions:
+#  sonarqube_bundled-plugins:
+#  postgresql:
+#  postgresql_data:
+#  db:
+
 volumes:
   db:
