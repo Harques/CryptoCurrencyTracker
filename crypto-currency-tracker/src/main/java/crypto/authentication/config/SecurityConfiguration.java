@@ -24,6 +24,11 @@ public class SecurityConfiguration{
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtRequestFilter jwtRequestFilter;
 
+    private static final String ROLE_ADMIN = "ROLE_ADMIN";
+    private static final String ROLE_USER = "ROLE_USER";
+    private static final String CURRENCY = "/currency/**";
+
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -34,10 +39,10 @@ public class SecurityConfiguration{
 
         httpSecurity.csrf().disable()
                 .authorizeRequests().antMatchers("/authenticate").permitAll()
-                        .antMatchers("/alert/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")/*access("hasAuthority('ROLE_ADMIN') and hasAuthority('ROLE_USER')")*/
-                        .antMatchers(HttpMethod.GET,"/currency/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-                        .antMatchers(HttpMethod.POST, "/currency/**").hasAuthority("ROLE_ADMIN")
-                        .antMatchers(HttpMethod.DELETE, "/currency/**").hasAuthority("ROLE_ADMIN").and()
+                        .antMatchers("/alert/**").hasAnyAuthority(ROLE_USER, ROLE_ADMIN)
+                        .antMatchers(HttpMethod.GET,CURRENCY).hasAnyAuthority(ROLE_USER, ROLE_ADMIN)
+                        .antMatchers(HttpMethod.POST, CURRENCY).hasAuthority(ROLE_ADMIN)
+                        .antMatchers(HttpMethod.DELETE, CURRENCY).hasAuthority(ROLE_ADMIN).and()
                         .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

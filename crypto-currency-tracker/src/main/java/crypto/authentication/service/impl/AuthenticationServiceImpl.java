@@ -20,7 +20,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(),jwtRequest.getPassword()));
         }
         catch (BadCredentialsException e){
-            throw new BadCredentialsException("INVALID_CREDENTIALS", e);
+            throw new BadCredentialsException("Bad credentials");
         }
     }
 }
