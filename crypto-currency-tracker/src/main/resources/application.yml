@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: dev
+
+jwt:
+  secret: JJ9QH7lNkaX3uHrhEAH8NWMcTxMLwtN9As4YsRiLbh08KV3Xet1pC19HZiOiYNe
+  authorities:
+    key: roles
