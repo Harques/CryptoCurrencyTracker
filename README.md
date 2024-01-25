@@ -10,16 +10,7 @@ The admin user also manages the currencies that will be listed on the app.
 
 ## Tech stack
 - [Spring Boot](https://spring.io/projects/spring-boot)
-- Java 8+ or Kotlin
-- Gradle or Maven
+- Java
+- Maven
 - Spring Data JPA
 - Hibernate
-- MySQL or PostgreSQL
-- GIT for version control
-
-## General Application Constraints
-- Data should only be accepted from the registered users with their ownership rights.
-- There are two types of users: Admin and User.
-    - Both user types can create alerts.
-    - Both users can query currencies.
-    - Only admin can manage the currency types in the system.
