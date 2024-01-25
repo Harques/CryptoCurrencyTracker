@@ -9,8 +9,9 @@ There is also currency list page where all coins with their current prices are l
 The admin user also manages the currencies that will be listed on the app.
 
 ## Tech stack
-- [Spring Boot](https://spring.io/projects/spring-boot)
+- Spring Boot
 - Java
 - Maven
 - Spring Data JPA
 - Hibernate
+- Docker
